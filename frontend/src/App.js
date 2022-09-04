@@ -1,18 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://pbs.twimg.com/media/CZFZciRVIAEP7a-.png" className="App-logo" alt="logo" />
-        <p className='App-link'>
-          Pagina en desarrollo, disculpe las molestias.
-        </p>
-
+      <Home />
       </header>
     </div>
   );
 }
 
-export default App;
