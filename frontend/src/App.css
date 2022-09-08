@@ -2,19 +2,8 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
- /* background-color: #FF294D #D8D8D8; */
+.body{
   background: linear-gradient(to right, #ff416c, #ff4b2b);
   min-height: 100vh;
   display: flex;
@@ -25,6 +14,48 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+
+.btn {
+  --color: white;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  padding: 10px;
+ }
+ 
+ .btn:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: black;
+  height: 105px;
+  width: 220px;
+  border-radius: 50%;
+ }
+ 
+.btn:hover {
+  color: white;
+ }
+ 
+ .btn:before {
+  top: 100%;
+  left: 100%;
+  transition: all .9s;
+ }
+ 
+ .btn:hover:before {
+  top: -30px;
+  left: -30px;
+ }
+ 
+ .btn:active:before {
+  background: #0d0c24;
+  transition: background 0s;
+ }
