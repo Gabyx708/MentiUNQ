@@ -50,3 +50,31 @@
     align-items: flex-start;
     gap: 10px;
 }
+
+
+.container-head-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.container-head-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 5px;
+}
+.container-title-back{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+.container-buttons-shared-presentation{
+    display: flex;
+    gap: 10px;
+}

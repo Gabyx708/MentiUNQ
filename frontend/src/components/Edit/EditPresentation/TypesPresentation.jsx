@@ -109,14 +109,19 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <input
-                    value={description}
+                  <Form.Control
                     type="text"
+                    value={description}
                     onChange={(e) => setDescription(e.target.value)}
+
+                    // aria-describedby="passwordHelpBlock"
                   />
+
                   <small>
-                    Agrega un texto corto que podría ayudar a poner en contexto
-                    a la pregunta
+                    <Form.Text id="contextInfo" muted>
+                      Agrega un texto corto que podría ayudar a poner en
+                      contexto a la pregunta
+                    </Form.Text>
                   </small>
                 </motion.div>
                 <Button
@@ -128,12 +133,14 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
                 </Button>{" "}
               </div>
               <strong>Tu pregunta</strong>
-              <input
+              <Form.Control
                 onChange={(e) => {
                   handleChangeQuestion(e.target.value);
                 }}
                 defaultValue={question}
                 type="text"
+
+                // aria-describedby="passwordHelpBlock"
               />
             </section>
           )}

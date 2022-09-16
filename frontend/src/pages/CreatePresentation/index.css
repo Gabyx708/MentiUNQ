@@ -13,6 +13,10 @@
 .header-presentation{
   grid-area: head;
   border-bottom: 2px solid #eeecec;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .slides-presentation{
