@@ -1,0 +1,155 @@
+
+.container-presentation{
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+      "head head head"
+      "slides edit types";
+  height: 100vh;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 200px 1fr 1fr;
+}
+
+.header-presentation{
+  grid-area: head;
+  border-bottom: 2px solid #eeecec;
+}
+
+.slides-presentation{
+  grid-area: slides;
+  height: 100%;
+  width: 100%;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%), 0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%), 0 16px 16px hsl(0deg 0% 0% / 8%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 200px;
+  max-width: 200px;
+}
+.body-presentation{
+    grid-area: edit;
+}
+.types-presentation{
+  grid-area: types;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%), 0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%), 0 16px 16px hsl(0deg 0% 0% / 8%);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: flex-start;
+}
+nav {
+    background: #fdfdfd;
+    border-radius: 10px;
+    border-bottom: 1px solid #eeeeee;
+  }
+  
+  .tabs {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 128px;
+    flex-grow: 1;
+    user-select: none;
+  }
+  
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  
+  li {
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 100%;
+    padding: 10px 15px;
+    position: relative;
+    background: white;
+    cursor: pointer;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    user-select: none;
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+  
+  li.selected {
+    background: rgb(198, 49, 49);
+  }
+  
+  li button {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background: #fff;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    stroke: #000;
+    margin-left: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
+  }
+  
+  .add-item {
+    width: 30px;
+    height: 30px;
+    background: #eee;
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    align-self: center;
+  }
+  
+  .add-item:disabled {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none;
+  }
+  
