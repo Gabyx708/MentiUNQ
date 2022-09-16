@@ -32,7 +32,7 @@ export default function CreatePresentation() {
         <h1>Cargando presentación</h1>
       ) : (
         <>
-        <HeadPresentation presentation={presentation}/>
+        <HeadPresentation currentPresentation={presentation} handlePresentationChange={handlePresentationChange}/>
         <SlidesPresentation presentation={presentation} handlePresentationChange={handlePresentationChange}/>
         </>
       )}

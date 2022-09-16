@@ -21,7 +21,6 @@ export default function SlidesPresentation({ presentation, handlePresentationCha
     handlePresentationChange(presentation);
   };
   const changeSlide = (item) => {
-
     console.log("🚀 ~ file: SlidesPresentation.jsx ~ line 25 ~ changeSlide ~ item", item)
   };
   useEffect(()=>{

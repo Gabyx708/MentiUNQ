@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import "./index.css";
 
-export default function HeadPresentation({ presentation }) {
+export default function HeadPresentation({ currentPresentation,handlePresentationChange}) {
+
+  const [newTitle, setNewTitle] = useState(currentPresentation.title);
   useEffect(() => {
-    console.log(
-      "🚀 ~ file: HeadPresentation.jsx ~ line 7 ~ useEffect ~ presentation",
-      presentation
-    );
-  }, [presentation]);
+   currentPresentation.title = newTitle
+   handlePresentationChange(currentPresentation)
+  }, [newTitle]);
+
   return (
     <div className="header-presentation">
       <header className="container-head-1">
@@ -17,9 +18,8 @@ export default function HeadPresentation({ presentation }) {
           <Form.Control
             type="text"
             style={{ width: "22rem" }}
-            value={presentation.title}
-            onChange={() => alert("test")}
-            aria-describedby="passwordHelpBlock"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
           />
         </div>
         <div className="container-buttons-shared-presentation">
