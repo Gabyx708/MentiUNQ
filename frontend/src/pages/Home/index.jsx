@@ -21,7 +21,7 @@ export default function Home() {
             onChange={(e) => setCodigo(e.target.value)}
           ></input>
 
-          <Link to={"/presentations/" + codigo}>
+          <Link to={"/view/presentations/" + codigo}>
             <button className="btn-custom"> Unirse</button>
           </Link>
         </div>

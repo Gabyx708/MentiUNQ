@@ -29,15 +29,10 @@ export default function PreviewSlide({ slide, select, index }) {
           exit="hidden"
           variants={variants}
         >
-          <motion.h4
-            custom={{ delay: (index + 1) * 0.1 }}
-            layoutId={slide.id}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={variants}
+          <h4
+            
             style={{ margin: "0px" }}>{slide.type.name}
-          </motion.h4>
+          </h4>
         </motion.div>
       )}
     </>

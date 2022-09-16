@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Form } from "react-bootstrap";
 
 export default function EditPresentation({ currentSlide }) {
   return (
@@ -16,7 +17,9 @@ export default function EditPresentation({ currentSlide }) {
 
             <h3>{currentSlide.question}</h3>
             <h4>{currentSlide.type.name}</h4>
+           
           </motion.div>
+          <Form.Control placeholder="Puede ingresar alguna nota a ésta slide si desea"></Form.Control>
         </div>
       ) : (
         <>Seleccione una slide</>
