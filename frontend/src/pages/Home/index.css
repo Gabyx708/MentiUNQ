@@ -30,12 +30,14 @@
     align-content: space-around;
     align-items: center;
     justify-content: flex-start;
+    width: 95%;
+    align-self: center;
+    justify-self: center;
   }
 .container-input-code{
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
     column-gap: 10px;
     justify-content: center;
 }

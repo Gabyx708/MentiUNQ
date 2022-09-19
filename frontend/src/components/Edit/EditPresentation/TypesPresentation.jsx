@@ -5,15 +5,11 @@ import useAllTypes from "../../../hooks/useAllTypes";
 import OptionsSlides from "../OptionsSlides/OptionsSlides";
 
 export default function TypesPresentation({ currentSlide, handleChange }) {
-  const [description, setDescription] = useState();
-  const [type, setType] = useState(
-    currentSlide && currentSlide.type ? currentSlide.type.id : 1
-  );
+  const [description, setDescription] = useState(currentSlide.context ? currentSlide.context : "");
+  const [type, setType] = useState(currentSlide && currentSlide.type ? currentSlide.type.id : 1);
   const [showDescription, setShowDescription] = useState(false);
 
-  const [question, setQuestion] = useState(
-    currentSlide ? currentSlide.question : "Agregue una pregunta"
-  );
+  const [question, setQuestion] = useState(currentSlide.question);
   const { types, loading } = useAllTypes();
 
   const pStyle = {
@@ -27,33 +23,26 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
     flexWrap: "nowrap",
     gap: "10px",
   };
-  const handleChangeType = (item) => {
-    if (item !== "default") {
-      const newSlide = { ...currentSlide }; // this is a new array, which contains the same items from the state
-      newSlide.type.id = parseInt(item);
-      let type = types.find((t) => t.id === parseInt(item));
-      newSlide.type.name = type.name;
-      newSlide.type.type = type.code;
-      newSlide.type.code = type.code;
-      handleChange(newSlide);
-    }
-  };
   useEffect(() => {
-    if (type !== "default" && types) {
-      const newSlide = { ...currentSlide }; // this is a new array, which contains the same items from the state
-      newSlide.type.id = parseInt(type);
-      let typeOld = types.find((t) => t.id === parseInt(type));
-      newSlide.type.name = typeOld.name;
-      newSlide.type.type = typeOld.code;
-      newSlide.type.code = typeOld.code;
-      newSlide.question = question;
-      handleChange(newSlide);
+    if (type && type !== "default" && types) {
+      let newType = types.find((t) => {
+        return t.id === parseInt(type);
+      });
+      currentSlide.type.id = newType.id;
+      currentSlide.type.name = newType.name;
+      currentSlide.type.type = newType.code;
+      currentSlide.type.code = newType.code;
+      handleChange(currentSlide);
     }
-  }, [description, question, type]);
+  }, [type]);
 
-  const handleChangeQuestion = (value) => {
-    setQuestion(value);
-  };
+  useEffect(() => {
+    if (currentSlide) {
+      currentSlide.question = question;
+      handleChange(currentSlide);
+    }
+    }, [question]);
+
   return (
     <>
       {currentSlide ? (
@@ -68,7 +57,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
               <h5>Tipo de diapositiva</h5>
               <Form.Select
                 defaultValue={
-                  currentSlide.type.code === "SINTIPO"
+                  currentSlide || currentSlide.type.code === "SINTIPO"
                     ? "default"
                     : currentSlide.type.id
                 }
@@ -135,7 +124,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
               <strong>Tu pregunta</strong>
               <Form.Control
                 onChange={(e) => {
-                  handleChangeQuestion(e.target.value);
+                  setQuestion(e.target.value);
                 }}
                 defaultValue={question}
                 type="text"
