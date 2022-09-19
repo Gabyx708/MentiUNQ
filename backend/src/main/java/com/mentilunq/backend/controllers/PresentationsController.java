@@ -21,11 +21,21 @@ public class PresentationsController {
         return presentationById;
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/presentations/create", method = RequestMethod.POST)
     public @ResponseBody
     Presentation createPresentation(@RequestBody Presentation presentation){
         if (presentation.getTitle()!=null && !presentation.getTitle().isEmpty()){
             return presentationService.createPresentation(presentation);
+        }
+        return presentation;
+    }
+    @CrossOrigin
+    @RequestMapping(value = "/presentations/update", method = RequestMethod.PUT)
+    public @ResponseBody
+    Presentation updatePresentation(@RequestBody Presentation presentation){
+        if (presentation.getTitle()!=null && !presentation.getTitle().isEmpty()){
+            return presentationService.updatePresentation(presentation);
         }
         return presentation;
     }
