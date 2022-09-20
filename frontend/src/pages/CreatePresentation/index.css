@@ -1,4 +1,3 @@
-
 .container-presentation{
   width: 100%;
   display: grid;
@@ -31,8 +30,16 @@
   min-width: 200px;
   max-width: 200px;
 }
-.body-presentation{
-    grid-area: edit;
+.edit-presentation{
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  grid-area: edit;
+  border-right: 2px solid #eeecec;
+  justify-content: flex-start;
+  background: rgb(233, 233, 233);
+  flex-direction: column;
+  gap: 20px;
 }
 .types-presentation{
   grid-area: types;
@@ -155,4 +162,18 @@ nav {
     cursor: default;
     pointer-events: none;
   }
-  
+  @media screen and (max-width: 900px) {
+    .container-presentation{
+        width: 100%;
+    display: grid;
+    grid-template-areas:
+        "head"
+        "slides"
+        "types";
+    grid-template-rows: .5fr .5fr 1fr;
+    grid-template-columns: 1fr;
+    }
+    .edit-presentation{
+      display: none;
+    }
+  }

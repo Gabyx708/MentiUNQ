@@ -7,6 +7,7 @@ import HeadPresentation from "../../components/Edit/EditPresentation/HeadPresent
 import SlidesPresentation from "../../components/Edit/EditPresentation/SlidesPresentation";
 import EditPresentation from "../../components/Edit/EditPresentation/EditPresentation";
 import TypesPresentation from "../../components/Edit/EditPresentation/TypesPresentation";
+import Loading from "../../components/Loading/Loading";
 
 export default function CreatePresentation() {
   const { id } = useParams();
@@ -47,11 +48,11 @@ export default function CreatePresentation() {
     handlePresentationChange(presentation);
   };
   return (
-    <div className="container-presentation">
+    <div>
       {loading ? (
-        <h1>Cargando presentación</h1>
+        <Loading/>
       ) : (
-        <>
+        <div className="container-presentation">
           <HeadPresentation
             currentPresentation={presentation}
             handlePresentationChange={handlePresentationChange}
@@ -71,7 +72,7 @@ export default function CreatePresentation() {
               />
             </>
           )}
-        </>
+        </div>
       )}
     </div>
   );

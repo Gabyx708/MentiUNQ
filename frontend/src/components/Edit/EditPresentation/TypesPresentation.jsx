@@ -54,7 +54,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
         >
           {!loading && (
             <section className="container-types">
-              <h5>Tipo de diapositiva</h5>
+              <h6>Tipo de diapositiva</h6>
               <Form.Select
                 defaultValue={
                   currentSlide || currentSlide.type.code === "SINTIPO"

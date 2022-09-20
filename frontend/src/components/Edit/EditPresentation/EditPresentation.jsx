@@ -19,7 +19,7 @@ export default function EditPresentation({ currentSlide }) {
             <h4>{currentSlide.type.name}</h4>
            
           </motion.div>
-          <Form.Control placeholder="Puede ingresar alguna nota a ésta slide si desea"></Form.Control>
+          <Form.Control as="textarea" rows={2} placeholder="Puede ingresar alguna nota a ésta slide si desea"></Form.Control>
         </div>
       ) : (
         <>Seleccione una slide</>
