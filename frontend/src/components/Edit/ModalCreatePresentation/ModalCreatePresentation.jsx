@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import useCreatePresentation from "../../../hooks/useCreatePresentation";
+import {LoginButton} from "../../Login/LoginButton";
+import {useAuth0} from '@auth0/auth0-react';
 
 export default function ModalCreatePresentation() {
   
@@ -11,6 +13,8 @@ export default function ModalCreatePresentation() {
   const navigate = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const {user,isAuthenticated} = useAuth0();
+  let activo = false;
 
   const handleCreate = () => {
     if (name && name.length >0) {
@@ -26,9 +30,13 @@ export default function ModalCreatePresentation() {
 
   return (
     <>
-      <button className="btn-custom" onClick={handleShow}>
+      <button className="btn-custom"  onClick={handleShow}>
         Crear presentación
       </button>
+      <div className="px-2">
+      <LoginButton />
+      </div>
+      {isAuthenticated ? console.log("si ,aparecer ventana") : console.log("no , mostrar ventana registro")}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header className="text-black flex flex-row justify-center w-full">
           <Modal.Title>Nombre de tu presentación</Modal.Title>
