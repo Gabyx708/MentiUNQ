@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import useCreatePresentation from "../../../hooks/useCreatePresentation";
 
 export default function ModalCreatePresentation() {
-  
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
   const { presentation, setTitle } = useCreatePresentation({ name });
@@ -13,14 +13,14 @@ export default function ModalCreatePresentation() {
   const handleShow = () => setShow(true);
 
   const handleCreate = () => {
-    if (name && name.length >0) {
+    if (name && name.length > 0) {
       setTitle(name);
     }
   };
   useEffect(() => {
     if (presentation) {
-      handleClose()
-      navigate('/edit/presentation/'+presentation.id)
+      handleClose();
+      navigate("/edit/presentation/" + presentation.id);
     }
   }, [presentation]);
 
@@ -34,12 +34,12 @@ export default function ModalCreatePresentation() {
           <Modal.Title>Nombre de tu presentación</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input
+          <Form.Control
             type="text"
             className=" rounded-md p-2 w-80 shadow-md text-black"
             placeholder="Ingresá el nombre de tu presentación"
             onChange={(e) => setName(e.target.value)}
-          ></input>
+          ></Form.Control>
         </Modal.Body>
         <Modal.Footer>
           <button className="btn-custom danger" onClick={handleClose}>

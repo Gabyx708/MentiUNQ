@@ -55,11 +55,6 @@
   overflow: scroll;
   overflow-x: hidden;
 }
-nav {
-    background: #fdfdfd;
-    border-radius: 10px;
-    border-bottom: 1px solid #eeeeee;
-  }
   
   .tabs {
     flex-grow: 1;
@@ -68,77 +63,6 @@ nav {
     align-items: flex-end;
     flex-wrap: nowrap;
     width: 100%;
-  }
-  
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 128px;
-    flex-grow: 1;
-    user-select: none;
-  }
-  
-  ul,
-  li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-  }
-  
-  ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
-  
-  li {
-    border-radius: 5px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 100%;
-    padding: 10px 5px;
-    position: relative;
-    background: white;
-    cursor: pointer;
-    height: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
-    min-width: 0;
-    position: relative;
-    user-select: none;
-  }
-  
-  .underline {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 1px;
-  }
-  
-  li.selected {
-    background: rgb(198, 49, 49);
-  }
-  
-  li button {
-    width: 20px;
-    height: 20px;
-    border: 0;
-    background: #fff;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    stroke: #000;
-    margin-left: 10px;
-    cursor: pointer;
-    flex-shrink: 0;
   }
   
   .background {
