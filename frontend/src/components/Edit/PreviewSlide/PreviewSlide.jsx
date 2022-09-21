@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import useComponent from "../../../hooks/useComponent";
 
 const variants = {
   hidden: {
@@ -16,7 +15,6 @@ const variants = {
 };
 
 export default function PreviewSlide({ slide, select, index }) {
-
   return (
     <>
       {slide && (
@@ -29,10 +27,8 @@ export default function PreviewSlide({ slide, select, index }) {
           exit="hidden"
           variants={variants}
         >
-          <h4
-            
-            style={{ margin: "0px" }}>{slide.type.name}
-          </h4>
+          <h5 style={{ margin: "0px" }}>{slide.type.name}</h5>
+          <h6>{slide.question}</h6>
         </motion.div>
       )}
     </>

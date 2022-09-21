@@ -1,86 +1,147 @@
-.edit-presentation{
-    display: flex;
-    padding: 15px;
-    align-items: center;
-    grid-area: edit;
-    border-right: 2px solid #eeecec;
-    justify-content: flex-start;
-    background: rgb(233, 233, 233);
-    flex-direction: column;
-    gap: 20px;
-}
-.editor-presentation{
-    width: 400px;
+.editor-presentation {
+    width: 450px;
     height: 300px;
     padding: 5px;
     border-radius: 5px;
+    display: flex;
+    text-align: left;
     background: #ffff;
     box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%), 0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%), 0 16px 16px hsl(0deg 0% 0% / 8%);
-}
-.container-types{
-    gap: 14px;
-    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 0px;
-    border-bottom: 2px solid #eeecec;
 }
-.container-question-description{
-    gap: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.container-types {
+  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 0px;
+  border-bottom: 2px solid #eeecec;
 }
-.slide-preview{
-    background: rgb(255 255 255);
+.container-question-description {
+  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.slide-preview {
+  background: rgb(255 255 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  opacity: 1;
+  color: #706f6f;
+  border-radius: 3px;
+  border: 1px solid #ccc6c6;
+}
+.container-context {
+  text-align: center;
+  opacity: 1;
+  transform: translateY(10px) translateZ(0px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.container-head-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+.container-head-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 5px;
+  border-top: 2px solid #eeecec;
+  padding: 10px;
+}
+.container-title-back {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.container-buttons-shared-presentation {
+  display: flex;
+  gap: 10px;
+}
+
+.form {
+  --width-of-input: 200px;
+  --border-height: 1px;
+  --border-before-color: rgba(221, 221, 221, 0.39);
+  --border-after-color: #dddfe3;
+  --input-hovered-color: #dee6f11f;
+  position: relative;
+  width: var(--width-of-input);
+}
+/* styling of Input */
+.input {
+  color: rgb(0, 0, 0);
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+  border-bottom: var(--border-height) solid var(--border-before-color);
+}
+/* styling of animated border */
+.input-border {
+  position: absolute;
+  background: var(--border-after-color);
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transition: 0.3s;
+}
+/* Hover on Input */
+input:hover {
+  background: var(--input-hovered-color);
+}
+
+input:focus {
+  outline: none;
+}
+/* here is code of animated border */
+input:focus ~ .input-border {
+  width: 100%;
+}
+
+.container-options-slide{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
     justify-content: center;
-    width: 100%;
-    height: 100px;
-    opacity: 1;
-    border-radius: 3px;
-    border: 1px solid #ccc6c6;
-}
-.container-context{
-    text-align: center;
-    opacity: 1;
-    transform: translateY(10px) translateZ(0px);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-
-.container-head-1{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
-}
-.container-head-2{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    padding: 10px 5px;
-    border-top: 2px solid #eeecec;
-    border-bottom: 2px solid #eeecec;
-    padding: 10px;
-}
-.container-title-back{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 15px;
+    height: 100%;
 }
 
-.container-buttons-shared-presentation{
+@media screen and (max-width: 900px) {
+  .slides-presentation {
+    grid-area: slides;
+    height: 100%;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 8%), 0 2px 2px hsl(0deg 0% 0% / 8%),
+      0 4px 4px hsl(0deg 0% 0% / 8%), 0 8px 8px hsl(0deg 0% 0% / 8%),
+      0 16px 16px hsl(0deg 0% 0% / 8%);
     display: flex;
-    gap: 10px;
+    flex-direction: row;
+    min-width: -webkit-fill-available;
+    max-width: 200px;
+    padding: 12px;
+    align-items: center;
+    margin: 0px 5px;
+  }
 }

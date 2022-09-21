@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./index.css";
 
@@ -20,12 +20,21 @@ export default function HeadPresentation({
           <Link to="/">
             <Button variant="outline-secondary">Volver</Button>
           </Link>
-          <Form.Control
+          <div className="form">
+            <input
+              className="input"
+              type="text"
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+            <span className="input-border"></span>
+          </div>
+          {/* <Form.Control
             type="text"
             style={{ width: "22rem" }}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-          />
+          /> */}
         </div>
         <div className="container-buttons-shared-presentation">
           <Button>Compartir</Button>

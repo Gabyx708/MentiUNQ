@@ -13,7 +13,7 @@ import java.util.Optional;
 public class PresentationService {
 
     private final PresentationRepository presentationRepository;
-    private TypesRepository typesRepository;
+    private final TypesRepository typesRepository;
 
     @Autowired
     public PresentationService(PresentationRepository presentationRepository, TypesRepository typesRepository) {
@@ -23,8 +23,8 @@ public class PresentationService {
 
     public Presentation createPresentation(Presentation presentation) {
         Slide slide = new Slide();
-        Optional<Type> byId = typesRepository.findById(TypeConstants.ID_BLANK);
-        Type typeSlide = byId.isPresent()?byId.get():typesRepository.save(new Blank());
+        Optional<Type> byId = typesRepository.findById(SlideTypeConstants.ID_BLANK);
+        Type typeSlide = byId.orElseGet(() -> typesRepository.save(new Blank()));
         slide.setType(typeSlide);
         presentation.addSlide(slide);
         return presentationRepository.save(presentation);

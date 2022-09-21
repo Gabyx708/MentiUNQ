@@ -1,6 +1,4 @@
-/* eslint-disable eqeqeq */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import createPresentation from "../services/presentations/createPresentation";
 
 export default function useCreatePresentation({ name }) {

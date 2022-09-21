@@ -1,7 +1,7 @@
 package com.mentilunq.backend.service;
 
+import com.mentilunq.backend.modelo.SlideTypeConstants;
 import com.mentilunq.backend.modelo.Type;
-import com.mentilunq.backend.modelo.TypeConstants;
 import com.mentilunq.backend.repository.TypesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +24,6 @@ public class TypesService {
     }
 
     public List<Type> getAllTypes() {
-        return typesRepository.findAll().stream().filter(t->!t.getCode().equals(TypeConstants.CODE_BLANK)).collect(Collectors.toList());
+        return typesRepository.findAll().stream().filter(t->!t.getCode().equals(SlideTypeConstants.BLANK_CODE)).collect(Collectors.toList());
     }
 }
