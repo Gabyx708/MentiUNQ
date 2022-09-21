@@ -1,19 +1,16 @@
 import "./App.css";
-import Home from "./components/Home/Home";
-import Navbar from "./components/NavBar/NavBar";
+import Home from "./pages/Home/index";
 import { Route, Routes } from "react-router-dom";
-import PresentationView from "./components/PresentationView/PresentationView"
+import PresentationView from "./pages/PresentationView/PresentationView.jsx"
+import CreatePresentation from "./pages/CreatePresentation/index.jsx";
 export default function App() {
   return (
     <div className="App">
-      <Navbar />
-      <div className="body">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/presentations/:code" element={<PresentationView />} />
-
+          <Route path="/view/presentations/:code" element={<PresentationView />} />
+          <Route path="/edit/presentation/:id" element={<CreatePresentation />} />
         </Routes>
-      </div>
     </div>
   );
 }

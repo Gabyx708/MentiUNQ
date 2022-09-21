@@ -1,7 +1,10 @@
 package com.mentilunq.backend.modelo;
 
 
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Presentation {
@@ -12,6 +15,26 @@ public class Presentation {
 
     @Column
     private String title;
+
+    public List<Slide> getSlides() {
+        return slides;
+    }
+
+    public void setSlides(List<Slide> slides) {
+        this.slides = slides;
+    }
+
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<Slide> slides;
+
+    public Presentation(String title) {
+        this.title = title;
+        this.slides = new ArrayList<>();
+    }
+
+    public Presentation() {
+
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -27,5 +50,12 @@ public class Presentation {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void addSlide(Slide slide) {
+        if (slides==null){
+            slides = new ArrayList<>();
+        }
+        slides.add(slide);
     }
 }

@@ -31,7 +31,6 @@ export default function PresentationView() {
       });
   }, [code]);
 
-  const backToHome = () => {};
   return (
     <>
       {isLoading ? (
@@ -54,7 +53,7 @@ export default function PresentationView() {
             <strong>No encontramos la presentación :(</strong>
           </h1>{" "}
           <Link to="/">
-          <button className="btn">Volver al inicio</button>
+          <button className="btn-custom">Volver al inicio</button>
         </Link>
         </>
       ) : (
