@@ -1,12 +1,14 @@
-import {useAuth0} from '@auth0/auth0-react'
-import "../../index.css"
+import { useAuth0 } from "@auth0/auth0-react";
+import "../../index.css";
+import { FiLogIn } from "react-icons/fi";
 
+export default function LoginButton() {
+  const { loginWithRedirect } = useAuth0();
 
-export  function LoginButton(){
-    
-const {loginWithRedirect} = useAuth0()
-
-    return <div>
-        <button className="btn-custom" onClick={()=> loginWithRedirect()}>registrarse</button>
-    </div>
+  return (
+      <button className="btn-custom" onClick={() => loginWithRedirect()}>
+        Iniciar sesión
+        <FiLogIn />
+      </button>
+  );
 }

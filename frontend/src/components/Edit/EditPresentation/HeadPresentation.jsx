@@ -42,7 +42,7 @@ export default function HeadPresentation({
         </div>
       </header>
       <div className="container-head-2">
-        <Button variant="info">Nueva slide</Button>
+        <Button variant="outline-info">Nueva slide</Button>
       </div>
     </div>
   );
