@@ -1,6 +1,7 @@
 package com.mentilunq.backend.modelo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Slide {
@@ -8,6 +9,8 @@ public class Slide {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ElementCollection
+    private List<String> responses;
     @Column
     private String question;
 
@@ -16,6 +19,13 @@ public class Slide {
 
     @Column
     private String note;
+    @Column
+    private String description;
+
+    @OneToMany()
+    private List<ItemOption> itemsOptions;
+    @OneToMany
+    private List<Pair> words;
 
     public Slide() {
 
@@ -27,6 +37,7 @@ public class Slide {
 
     public void setType(Type typeSlide) {
         this.type = typeSlide;
+        type.setDefaultsOptions(this);
     }
 
     @OneToOne( cascade = CascadeType.ALL)
@@ -62,5 +73,61 @@ public class Slide {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<ItemOption> getOptions() {
+        return itemsOptions;
+    }
+
+    public void addOption(ItemOption itemO) {
+        type.addOption(itemO,this);
+    }
+
+    public List<ItemOption> getItemsOptions() {
+        return itemsOptions;
+    }
+
+    public void setItemsOptions(List<ItemOption> itemsOptions) {
+        this.itemsOptions = itemsOptions;
+    }
+
+    public void action(ItemOption itemOption) {
+        type.action(itemOption,this);
+    }
+
+    public void removeAction(ItemOption itemOption) {
+        type.removeAction(itemOption,this);
+    }
+
+    public void action(String text) {
+        type.action(text,this);
+    }
+
+    public List<Pair> getWords() {
+        return words;
+    }
+
+    public void setWords(List<Pair> words) {
+        this.words = words;
+    }
+
+    public List<String> getResponses() {
+        return responses;
+    }
+
+    public void setResponses(List<String> responses) {
+        this.responses = responses;
+    }
+
+    public void addOption(String option) {
+        type.action(option,this);
     }
 }

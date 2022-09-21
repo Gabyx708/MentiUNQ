@@ -20,7 +20,7 @@ public class Type {
     protected String name;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     protected Long id;
 
     @Column
@@ -30,6 +30,12 @@ public class Type {
 
     }
 
+    public Type(String name, String code) {
+
+        this.name = name;
+        this.code = code;
+    }
+
     public String getCode() {
         return code;
     }
@@ -37,8 +43,6 @@ public class Type {
     public void setCode(String code) {
         this.code = code;
     }
-
-
 
     public String getName() {
         return name;
@@ -56,4 +60,14 @@ public class Type {
         return id;
     }
 
+    protected void setDefaultsOptions(Slide slide) {
+
+    }
+    public void addOption(ItemOption newItemOption, Slide slide){}
+
+    public void action(ItemOption itemOption, Slide slide) {}
+
+    public void removeAction(ItemOption itemOption, Slide slide) {}
+
+    public void action(String text, Slide slide) {}
 }
