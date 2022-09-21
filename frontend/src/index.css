@@ -15,3 +15,25 @@ code {
 #root{
   min-height: 100vh;
 }
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #a8a8a8 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: fit-content;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+    border-radius: 5px;
+    border: 3px solid #ffffff;
+  }

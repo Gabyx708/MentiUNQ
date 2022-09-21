@@ -7,7 +7,7 @@ export default function ModalCreatePresentation() {
   
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
-  const { presentation, loading, setTitle } = useCreatePresentation({ name });
+  const { presentation, setTitle } = useCreatePresentation({ name });
   const navigate = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

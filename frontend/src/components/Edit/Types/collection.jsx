@@ -11,22 +11,23 @@ const collectionTypes = [  {
   {
     // default export
     code: "MULCHO",
-    component: <MultipleChoice />,
+    component: MultipleChoice,
   },
   {
     // default export
     code: "WORCLO",
-    component: <WordCloud />,
+    component: WordCloud,
   },
   {
     // default export
     code: "OPENEND",
-    component: <OpenEnded />,
+    component: OpenEnded,
   },
   {
     // default export
     code: "RANKING",
-    component: <Ranking />,
+    component: Ranking,
+    fields:[1,2,3]
   },];
 
  export default function checkout (step ) {

@@ -31,7 +31,6 @@ export default function PresentationView() {
       });
   }, [code]);
 
-  const backToHome = () => {};
   return (
     <>
       {isLoading ? (
