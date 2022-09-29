@@ -2,11 +2,15 @@ package com.mentilunq.backend.modelo;
 
 
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@ApiModel(value = "Presentation",
+        description = "Representa una presentacion con sus correspondientes slides y owner")
 public class Presentation {
 
     @Id
