@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.mentilunq.backend.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -16,7 +17,10 @@ public class UserService {
     public  UserService(UserRepository userRepository){this.userRepository = userRepository;}
 
     public User createUser(User user){
-        return  userRepository.save(user);
+       if(!userRepository.findById(user.getEmail()).isPresent()){
+           return  userRepository.save(user);
+       }
+       return  null;
     }
 
     public List <User> getAllUsers(){

@@ -1,47 +1,33 @@
-import { Link } from "react-router-dom";
-import unqLogo from "../../assets/mentiLogo.svg";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import "./index.css";
-import { Form } from "react-bootstrap";
 import Navbar from "../../components/Edit/NavBar/NavBar";
-import {AddUser} from '../../services/Users/AddUser';
+import addUser from '../../services/Users/addUser';
 import { useAuth0 } from "@auth0/auth0-react";
+import HomeCard from "./HomeCard";
 
 export default function Home() {
-  const [codigo, setCodigo] = useState();
-  const {user} = useAuth0();
 
-  if(user !== undefined){
-    
-    let newUser = { email: user.email, name: user.name };
+ 
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log("🚀 ~ file: NavBar.js ~ line 11 ~ Navbar ~ isLoading", isLoading);
+  console.log(
+    "🚀 ~ file: NavBar.js ~ line 11 ~ Navbar ~ isAuthenticated",
+    isAuthenticated
+  );
+  
+  useEffect(()=>{
+    if(isAuthenticated){
+      addUser(user);
+    }
+  },[isAuthenticated , user])
 
-    fetch("http://localhost:8080/users/create", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(newUser),
-    })
-      .then((res) => res.json())
-      .then((response) => response);
-  }
-
-  return (
+  
+  return ( 
     <div className="home">
       <header className="header-home">
         <Navbar/>
       </header>
-      <div className="body-home">
-        <img src={unqLogo} alt="logo" className="img-logo-home" />
-        <div className="container-input-code">
-          <Form.Control
-            onChange={(e) => setCodigo(e.target.value)}
-            type="text"
-            placeholder="Introduce el código aquí"
-          />
-          <Link to={"/view/presentations/" + codigo}>
-            <button className="btn-custom"> Unirse</button>
-          </Link>
-        </div>
+      {isAuthenticated ? (<h4>Aun no tienes presentaciones! :C </h4>) : (<HomeCard/>)}     
       </div>
-    </div>
   );
 }

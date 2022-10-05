@@ -10,7 +10,8 @@ import java.util.List;
 
 @Entity
 @ApiModel(value = "Presentation",
-        description = "Representa una presentacion con sus correspondientes slides y owner")
+        description =4275
+        "Representa una presentacion con sus correspondientes slides y owner")
 public class Presentation {
 
     @Id

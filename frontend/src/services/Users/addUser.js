@@ -1,10 +1,8 @@
-//este componenete agrega usuarios
-import {useAuth0 } from "@auth0/auth0-react";
+//esta funcion agrega usuarios
 
-export function AddUser({User}) {
+export default function addUser(usuario) {
   
-
-  let newUser = { email: User.email, name: User.name };
+  let newUser = { email: usuario.email, name: usuario.name };
 
   fetch("http://localhost:8080/users/create", {
     method: "POST",
@@ -13,6 +11,7 @@ export function AddUser({User}) {
   })
     .then((res) => res.json())
     .then((response) => response);
-  
-    return console.log('work')
+    
+ 
+
 }

@@ -25,6 +25,14 @@ public class PresentationsController {
     }
 
     @CrossOrigin
+    @RequestMapping(value="/presentations/delete/{id}", method = RequestMethod.DELETE)
+    @ApiOperation(value="elimina una presentacion")
+    public Optional<Presentation> deletePresentationById(@PathVariable("id") String id){
+        Optional<Presentation> presentationById = presentationService.deletePresentationById(id);
+        return presentationById;
+    }
+
+    @CrossOrigin
     @RequestMapping(value = "/presentations/create", method = RequestMethod.POST)
     @ApiOperation(value = "Crea una presentacion")
     public @ResponseBody

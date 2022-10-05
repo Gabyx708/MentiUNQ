@@ -34,6 +34,11 @@ public class PresentationService {
         return presentationRepository.findById(Long.valueOf(id));
     }
 
+    public Optional<Presentation> deletePresentationById(String id) {
+        presentationRepository.deleteById(Long.valueOf(id));
+        return  null;
+    }
+
     public Presentation updatePresentation(Presentation presentation) {
         return presentationRepository.save(presentation);
     }
