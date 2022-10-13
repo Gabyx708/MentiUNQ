@@ -25,7 +25,6 @@ export default function SlidesPresentation({ slides, currentSlide,setCurrentSlid
                     key={item.id}
                     value={item}
                     onClick={() => changeSlide(item)}
-                    style={{backgroundColor:(item===currentSlide?"#d1e2ff":"transparent"),borderRadius:"0px"}}
                   >
                     {item.id === currentSlide ? (
                       <motion.div className="underline" layoutId="underline" />

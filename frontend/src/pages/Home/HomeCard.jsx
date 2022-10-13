@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function HomeCard() {
     
   const [codigo, setCodigo] = useState();
+  console.log("🚀 ~ file: HomeCard.jsx ~ line 9 ~ HomeCard ~ codigo", codigo)
 
   return (
     <div className="body-home">

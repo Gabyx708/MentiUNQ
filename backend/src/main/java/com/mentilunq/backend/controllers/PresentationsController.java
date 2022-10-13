@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +23,14 @@ public class PresentationsController {
     public Optional<Presentation> getPresentationById(@PathVariable("id") String id){
         Optional<Presentation> presentationById = presentationService.getPresentationById(id);
         return presentationById;
+    }
+
+    @CrossOrigin
+    @RequestMapping(value="/presentations/all/{userID}", method = RequestMethod.GET)
+    @ApiOperation(value = "Obtiene todas las presentaciones de un usuario")
+    public List<Presentation> getAllPresentationByUser(@PathVariable("userID") String userID){
+        List<Presentation> presentations = presentationService.getAllPresentationsByUser(userID);
+        return presentations;
     }
 
     @CrossOrigin

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @ApiModel(value = "Presentation",
-        description =4275
+        description =
         "Representa una presentacion con sus correspondientes slides y owner")
 public class Presentation {
 
@@ -18,6 +18,8 @@ public class Presentation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    private User user;
     @Column
     private String title;
 
@@ -62,5 +64,13 @@ public class Presentation {
             slides = new ArrayList<>();
         }
         slides.add(slide);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

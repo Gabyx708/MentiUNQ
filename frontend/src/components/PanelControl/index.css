@@ -1,0 +1,18 @@
+.panel-control{
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: flex-start;
+    height: 100%;
+    padding: 16px;
+    justify-content: flex-start;
+}
+.presentation-row{
+    cursor: pointer;
+}
+
+.presentation-row:hover{
+    opacity: .3;
+}

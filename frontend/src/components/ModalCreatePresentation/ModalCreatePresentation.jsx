@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
-import useCreatePresentation from "../../../hooks/useCreatePresentation";
+import useCreatePresentation from "../../hooks/useCreatePresentation";
 
-export default function ModalCreatePresentation() {
+export default function ModalCreatePresentation({user}) {
+  console.log("🚀 ~ file: ModalCreatePresentation.jsx ~ line 8 ~ ModalCreatePresentation ~ user", user)
   const [show, setShow] = useState(false);
   const [name, setName] = useState();
-  const { presentation, setTitle } = useCreatePresentation({ name });
+  const { presentation, setTitle } = useCreatePresentation({ name,user });
   const navigate = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
