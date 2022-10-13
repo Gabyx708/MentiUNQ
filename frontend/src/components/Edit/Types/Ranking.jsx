@@ -8,7 +8,6 @@ export default function Ranking() {
     { id: 33,text:"prueba3"},
   ]);
   return (
-    <div>
       <Reorder.Group
         className="todo-list"
         axis="y"
@@ -21,6 +20,5 @@ export default function Ranking() {
           </Reorder.Item>
         ))}
       </Reorder.Group>
-    </div>
   );
 }

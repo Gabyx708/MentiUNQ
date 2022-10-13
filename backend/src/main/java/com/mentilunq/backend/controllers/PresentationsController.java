@@ -56,7 +56,7 @@ public class PresentationsController {
     @ApiOperation(value = "Update de una presentacion")
     public @ResponseBody
     Presentation updatePresentation(@RequestBody Presentation presentation){
-        if (presentation.getTitle()!=null && !presentation.getTitle().isEmpty()){
+            if (presentation.getTitle()!=null && !presentation.getTitle().isEmpty()){
             return presentationService.updatePresentation(presentation);
         }
         return presentation;

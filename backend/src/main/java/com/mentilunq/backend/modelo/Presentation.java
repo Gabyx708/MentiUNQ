@@ -3,6 +3,8 @@ package com.mentilunq.backend.modelo;
 
 
 import io.swagger.annotations.ApiModel;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.List;
 @ApiModel(value = "Presentation",
         description =
         "Representa una presentacion con sus correspondientes slides y owner")
+@Getter
+@Setter
 public class Presentation {
 
     @Id
@@ -22,14 +26,6 @@ public class Presentation {
     private User user;
     @Column
     private String title;
-
-    public List<Slide> getSlides() {
-        return slides;
-    }
-
-    public void setSlides(List<Slide> slides) {
-        this.slides = slides;
-    }
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Slide> slides;
@@ -42,21 +38,8 @@ public class Presentation {
     public Presentation() {
 
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public void addSlide(Slide slide) {

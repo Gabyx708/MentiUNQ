@@ -20,7 +20,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
     currentSlide.description ? currentSlide.description : ""
   );
   const [type, setType] = useState(
-    currentSlide && currentSlide.type ? currentSlide.type.id : 1
+    currentSlide && currentSlide.type ? currentSlide.type : "sintipo"
   );
   const [showContext, setShowContext] = useState(context!=="");
   const [showDescription, setShowDescription] = useState(description!=="");
@@ -37,14 +37,14 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
   };
 
   useEffect(() => {
-    if (type && type !== "default" && types && type!==currentSlide.type.id) {
+    console.log("🚀 ~ file: TypesPresentation.jsx ~ line 41 ~ useEffect ~ type", type)
+    if (type && type !== "default" && types && type!==currentSlide.type) {
       let newType = types.find((t) => {
-        return t.id === parseInt(type);
+        return t.code === type;
       });
-      currentSlide.type.id = newType.id;
-      currentSlide.type.name = newType.name;
-      currentSlide.type.type = newType.code;
-      currentSlide.type.code = newType.code;
+      currentSlide.type = newType.code;
+      currentSlide.name = newType.name;
+
       handleChange(currentSlide);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -88,7 +88,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
                 defaultValue={type}
                 onChange={(e) => setType(e.target.value)}
               >
-                {currentSlide.type.code === "SINTIPO" && (
+                {currentSlide.type === "sintipo" && (
                   <option
                     key="default"
                     value={1}
@@ -98,8 +98,8 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
                 )}
                 {types.map((item) => (
                   <option
-                    key={item.id}
-                    value={item.id}
+                    key={item.code}
+                    value={item.code}
                   >
               
                     {item.name}
@@ -108,7 +108,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
               </Form.Select>
             </section>
           )}
-          {currentSlide.type.id && (
+          {currentSlide.type && (
             <section className="container-question-description">
               <div style={styleGroup}>
                 <motion.div
@@ -181,7 +181,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
               </div>
             </section>
           )}
-          {currentSlide.type.code !== "SINTIPO" && (
+          {currentSlide.type.code !== "sintipo" && (
             <OptionsSlides currentSlide={currentSlide} />
           )}
         </motion.div>

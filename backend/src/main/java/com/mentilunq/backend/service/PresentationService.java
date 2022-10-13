@@ -5,6 +5,7 @@ import com.mentilunq.backend.modelo.*;
 import com.mentilunq.backend.repository.PresentationRepository;
 import com.mentilunq.backend.repository.TypesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,9 +27,6 @@ public class PresentationService {
 
     public Presentation createPresentation(Presentation presentation) {
         Slide slide = new Slide();
-        Optional<Type> byId = typesRepository.findById(SlideTypeConstants.ID_BLANK);
-        Type typeSlide = byId.orElseGet(() -> typesRepository.save(new Blank()));
-        slide.setType(typeSlide);
         presentation.addSlide(slide);
         return presentationRepository.save(presentation);
     }

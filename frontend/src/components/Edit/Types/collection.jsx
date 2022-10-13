@@ -5,27 +5,27 @@ import WordCloud from "./WordCloud";
 
 const collectionTypes = [  {
     // default export
-    code: "SINTIPO",
+    code: "sintipo",
     component: "SinTipo",
   },
   {
     // default export
-    code: "MULCHO",
+    code: "multiplechoice",
     component: MultipleChoice,
   },
   {
     // default export
-    code: "WORCLO",
+    code: "wordcloud",
     component: WordCloud,
   },
   {
     // default export
-    code: "OPENEND",
+    code: "openended",
     component: OpenEnded,
   },
   {
     // default export
-    code: "RANKING",
+    code: "ranking",
     component: Ranking,
     fields:[1,2,3]
   },];
