@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @ApiModel(value = "Presentation",
@@ -27,10 +28,16 @@ public class Presentation {
     @Column
     private String title;
 
+    @Column
+    public int pres_code;
+
     @OneToMany(cascade=CascadeType.ALL)
     private List<Slide> slides;
 
     public Presentation(String title) {
+        final int min= 100;
+        final int max= 4000;
+        this.pres_code = (int)Math.floor(Math.random()*(max-min+1)+min);
         this.title = title;
         this.slides = new ArrayList<>();
     }
