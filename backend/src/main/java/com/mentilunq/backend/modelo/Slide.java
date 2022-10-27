@@ -40,6 +40,8 @@ public class Slide {
     @Column
     private String type;
 
+    private Boolean currentSlide;
+
     public Slide() {
         name = "Sin Tipo";
         type = "sintipo";

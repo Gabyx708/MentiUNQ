@@ -28,6 +28,7 @@ public class PresentationService {
 
     public Presentation createPresentation(Presentation presentation) {
         Slide slide = new Slide();
+        slide.setCurrentSlide(true);
         presentation.setDateCreate(new Date());
         presentation.addSlide(slide);
         return presentationRepository.save(presentation);
