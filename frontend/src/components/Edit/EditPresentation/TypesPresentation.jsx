@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import useAllTypes from "../../../hooks/useAllTypes";
 import OptionsSlide from "../OptionsSlides/OptionsSlide";
+import ListOfTypes from "./ListOfTypes";
 
 
 const styleGroup = {
@@ -13,16 +14,13 @@ const styleGroup = {
   gap: "10px",
 };
 export default function TypesPresentation({ currentSlide, handleChange }) {
-  console.log("🚀 ~ file: TypesPresentation.jsx ~ line 16 ~ TypesPresentation ~ currentSlide", currentSlide)
-  const [context, setContext] = useState(
+   const [context, setContext] = useState(
     currentSlide.context ? currentSlide.context : ""
   );
   const [description, setDescription] = useState(
     currentSlide.description ? currentSlide.description : ""
   );
-  const [type, setType] = useState(
-    currentSlide && currentSlide.type ? currentSlide.type : "sintipo"
-  );
+  const [type, setType] = useState(currentSlide.type);
   const [showContext, setShowContext] = useState(context!=="");
   const [showDescription, setShowDescription] = useState(description!=="");
   const [question, setQuestion] = useState(currentSlide.question?currentSlide.question:"");
@@ -38,7 +36,8 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
   };
 
   useEffect(() => {
-    if (type && type !== "default" && types && type!==currentSlide.type) {
+
+    if (type && type !== "sintipo" && types && type !==currentSlide.type) {
       let newType = types.find((t) => {
         return t.code === type;
       });
@@ -53,25 +52,29 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
   useEffect(() => {
     if (currentSlide && currentSlide.question!==question) {
       currentSlide.question = question;
-      handleChange(currentSlide);
+      const timeoutId = setTimeout(() => handleChange(currentSlide), 1500);
+      return () => clearTimeout(timeoutId);
+      ;
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question]);
-
   useEffect(() => {
     if (currentSlide && currentSlide.context!==context) {
       currentSlide.context = context;
-      handleChange(currentSlide);
+      const timeoutId = setTimeout(() => handleChange(currentSlide), 1500);
+      return () => clearTimeout(timeoutId);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context]);
   useEffect(() => {
     if (currentSlide && currentSlide.description!==description) {
       currentSlide.description = description;
-      handleChange(currentSlide);
+      const timeoutId = setTimeout(() => handleChange(currentSlide), 1500);
+      return () => clearTimeout(timeoutId);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [description]);
+
   return (
     <>
       {currentSlide ? (
@@ -84,28 +87,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
           {!loading && (
             <section className="container-types">
               <h6>Tipo de diapositiva</h6>
-              <Form.Select
-                defaultValue={type}
-                onChange={(e) => setType(e.target.value)}
-              >
-                {currentSlide.type === "sintipo" && (
-                  <option
-                    key="default"
-                    value={1}
-                  >
-                    Seleccione un tipo
-                  </option>
-                )}
-                {types.map((item) => (
-                  <option
-                    key={item.code}
-                    value={item.code}
-                  >
-              
-                    {item.name}
-                  </option>
-                ))}
-              </Form.Select>
+              {types && <ListOfTypes types={types} setType={setType} currentType={currentSlide.type} allTypes={types}/ >}
             </section>
           )}
           {currentSlide.type && (

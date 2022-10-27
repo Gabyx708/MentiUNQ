@@ -10,11 +10,12 @@ export default function TablePresentations({ presentations }) {
         <tr>
           <th>#</th>
           <th> Nombre </th>
+          <th> Acciones </th>
         </tr>
       </thead>
       <tbody>
         {presentations.map((item) => (
-          <ItemPresentation presentation={item} />
+          <ItemPresentation key={item} presentation={item} />
         ))}
       </tbody>
     </Table>

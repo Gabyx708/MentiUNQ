@@ -1,0 +1,9 @@
+.type-selection{
+    cursor: pointer;
+}
+.type-selection:hover{
+    opacity: .7;
+}
+.type-selection.type-active{
+    background-color: #d6d6d6;
+}

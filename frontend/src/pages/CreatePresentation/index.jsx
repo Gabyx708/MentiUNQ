@@ -10,6 +10,7 @@ import TypesPresentation from "../../components/Edit/EditPresentation/TypesPrese
 import Loading from "../../components/Loading/Loading";
 
 export default function CreatePresentation() {
+ 
   const { id } = useParams();
   const { presentation, loading, setPresentation } = useSinglePresentation({
     id,
@@ -17,12 +18,27 @@ export default function CreatePresentation() {
   const [currentSlide, setCurrentSlide] = useState(
     null
   );
+  const [slides, setSlides] = useState(loading ? [] : presentation.slides);
 
   useEffect(() => {
     if (presentation) {
-      setCurrentSlide(presentation.slides[0]);
+      setCurrentSlide(getCurrentSlide(presentation));
+      setSlides(presentation.slides);
     }
   }, [presentation]);
+
+  const getCurrentSlide = (presentation) => {
+    if (presentation) {
+      let currentTMP = presentation.slides.filter(
+        (slide) => slide.currentSlide
+      );
+      return currentTMP[0];
+    }
+  };
+  const reOrderSlides = (newSlides) => {
+    presentation.slides = newSlides;
+    handlePresentationChange(presentation);
+  };
 
   const handlePresentationChange = (newPresentation) => {
     const requestOptions = {
@@ -47,25 +63,53 @@ export default function CreatePresentation() {
     setCurrentSlide(newSlide);
     handlePresentationChange(presentation);
   };
+  
+  const handleCreateSlide = (newSlide) => {
+    let newSlides = [...presentation.slides, newSlide];
+    presentation.slides = newSlides;
+    handlePresentationChange(presentation);
+  };
+
+  const changeCurrentSlide = (slide) => {
+    currentSlide.currentSlide = false;
+    slide.currentSlide = true;
+    setCurrentSlide(slide)
+    const requestOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(presentation),
+    };
+    fetch(`http://localhost:8080/presentations/update`, requestOptions)
+      .then((res) => res.json())
+      .then((response) => response)
+      .then((presentationResponse) => {
+        setPresentation(presentationResponse);
+      });
+  };
   return (
     <div>
       {loading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <div className="container-presentation">
           <HeadPresentation
             currentPresentation={presentation}
             handlePresentationChange={handlePresentationChange}
+            handleCreateSlide={handleCreateSlide}
           />
           {currentSlide && (
             <>
               <SlidesPresentation
-                slides={presentation.slides}
+                slides={slides}
                 currentSlide={currentSlide}
-                setCurrentSlide={setCurrentSlide}
+                reOrderSlides={reOrderSlides}
                 handlePresentationChange={handlePresentationChange}
+                changeCurrentSlide={changeCurrentSlide}
               />
-              <EditPresentation currentSlide={currentSlide} handleChange={handleChange}/>
+              <EditPresentation
+                currentSlide={currentSlide}
+                handleChange={handleChange}
+              />
               <TypesPresentation
                 currentSlide={currentSlide}
                 handleChange={handleChange}

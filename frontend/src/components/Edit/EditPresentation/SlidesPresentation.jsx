@@ -4,11 +4,7 @@ import { Reorder, motion } from "framer-motion";
 import PreviewSlide from "../PreviewSlide/PreviewSlide";
 
 
-export default function SlidesPresentation({ slides, currentSlide,setCurrentSlide }) {
-
-  const changeSlide = (item) => {
-    console.log("🚀 ~ file: SlidesPresentation.jsx ~ line 25 ~ changeSlide ~ item", item)
-  };
+export default function SlidesPresentation({ slides, currentSlide,reOrderSlides,changeCurrentSlide }) {
   return (
     <>
       {currentSlide ? (
@@ -18,21 +14,22 @@ export default function SlidesPresentation({ slides, currentSlide,setCurrentSlid
               className="todo-list-slides"
               axis="y"
               values={slides}
+              onReorder={(v)=>reOrderSlides(v)}
             >
               {slides ? (
                 slides.map((item, indx) => (
                   <Reorder.Item
                     key={item.id}
                     value={item}
-                    onClick={() => changeSlide(item)}
                   >
                     {item.id === currentSlide.id ? (
                       <motion.div className="underline" layoutId="underline" />
                     ) : null}
                     <PreviewSlide
                       slide={item}
-                      select={item.id === currentSlide.id}
+                      isSelected={item.id === currentSlide.id}
                       index={indx + 1}
+                      changeCurrentSlide={changeCurrentSlide}
                     ></PreviewSlide>
                   </Reorder.Item>
                 ))

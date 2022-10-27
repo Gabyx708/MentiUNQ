@@ -17,7 +17,7 @@ const variants = {
   }),
 };
 
-export default function Option({ index, todo }) {
+export default function Option({ index, todo,remove }) {
   return (
     <motion.div
       custom={{ delay: (index + 1) * 0.1 }}
@@ -31,12 +31,13 @@ export default function Option({ index, todo }) {
       layoutId={index}
     >
       <div className="view">
-        <HiViewList style={{fontSize: "large"}}/>
+        <HiViewList style={{fontSize: "large",cursor:"pointer"}}/>
         <Form.Control onChange={() => alert("TEST")} value={todo} />
         <motion.button
           whileTap={{ scale: 0.9 }}
           whileHover={{ cursor: "pointer", scale: 1.2 }}
           type="button"
+          onClick={()=>remove(index,todo)}
           className="destroy"
         />
       </div>
