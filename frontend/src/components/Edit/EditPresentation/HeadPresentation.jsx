@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./index.css";
+import { VscArrowLeft ,VscVmRunning,VscLiveShare} from "react-icons/vsc";
 
 export default function HeadPresentation({
   currentPresentation,
@@ -18,7 +19,7 @@ export default function HeadPresentation({
       <header className="container-head-1">
         <div className="container-title-back">
           <Link to="/">
-            <Button variant="outline-secondary">Volver</Button>
+            <Button variant="outline-secondary"> <VscArrowLeft/> Volver</Button>
           </Link>
           <div className="form">
             <input
@@ -37,8 +38,8 @@ export default function HeadPresentation({
           /> */}
         </div>
         <div className="container-buttons-shared-presentation">
-          <Button>Compartir</Button>
-          <Button variant="outline-success">Presentar</Button>{" "}
+          <Button><VscLiveShare/>Compartir</Button>
+          <Button variant="outline-success"> <VscVmRunning/>Presentar</Button>{" "}
         </div>
       </header>
       <div className="container-head-2">

@@ -28,11 +28,11 @@ export default function Option({ index, todo }) {
         width: "85%",
       }}
       variants={variants}
-      layoutId={todo.id}
+      layoutId={index}
     >
       <div className="view">
         <HiViewList style={{fontSize: "large"}}/>
-        <Form.Control onChange={() => alert("TEST")} value={todo.text} />
+        <Form.Control onChange={() => alert("TEST")} value={todo} />
         <motion.button
           whileTap={{ scale: 0.9 }}
           whileHover={{ cursor: "pointer", scale: 1.2 }}

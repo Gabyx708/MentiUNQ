@@ -5,7 +5,7 @@ import PreviewSlide from "../PreviewSlide/PreviewSlide";
 
 
 export default function SlidesPresentation({ slides, currentSlide,setCurrentSlide }) {
- 
+
   const changeSlide = (item) => {
     console.log("🚀 ~ file: SlidesPresentation.jsx ~ line 25 ~ changeSlide ~ item", item)
   };
@@ -15,7 +15,7 @@ export default function SlidesPresentation({ slides, currentSlide,setCurrentSlid
         <>
           <div className="slides-presentation">
             <Reorder.Group
-              className="todo-list"
+              className="todo-list-slides"
               axis="y"
               values={slides}
             >
@@ -26,12 +26,12 @@ export default function SlidesPresentation({ slides, currentSlide,setCurrentSlid
                     value={item}
                     onClick={() => changeSlide(item)}
                   >
-                    {item.id === currentSlide ? (
+                    {item.id === currentSlide.id ? (
                       <motion.div className="underline" layoutId="underline" />
                     ) : null}
                     <PreviewSlide
                       slide={item}
-                      select={item.id === currentSlide.type.id}
+                      select={item.id === currentSlide.id}
                       index={indx + 1}
                     ></PreviewSlide>
                   </Reorder.Item>

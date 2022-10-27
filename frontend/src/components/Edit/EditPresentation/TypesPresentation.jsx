@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import useAllTypes from "../../../hooks/useAllTypes";
-import OptionsSlides from "../OptionsSlides/OptionsSlides";
+import OptionsSlide from "../OptionsSlides/OptionsSlide";
 
 
 const styleGroup = {
@@ -13,6 +13,7 @@ const styleGroup = {
   gap: "10px",
 };
 export default function TypesPresentation({ currentSlide, handleChange }) {
+  console.log("🚀 ~ file: TypesPresentation.jsx ~ line 16 ~ TypesPresentation ~ currentSlide", currentSlide)
   const [context, setContext] = useState(
     currentSlide.context ? currentSlide.context : ""
   );
@@ -24,7 +25,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
   );
   const [showContext, setShowContext] = useState(context!=="");
   const [showDescription, setShowDescription] = useState(description!=="");
-  const [question, setQuestion] = useState(currentSlide.question);
+  const [question, setQuestion] = useState(currentSlide.question?currentSlide.question:"");
   const { types, loading } = useAllTypes();
 
   const pStyle = {
@@ -37,7 +38,6 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
   };
 
   useEffect(() => {
-    console.log("🚀 ~ file: TypesPresentation.jsx ~ line 41 ~ useEffect ~ type", type)
     if (type && type !== "default" && types && type!==currentSlide.type) {
       let newType = types.find((t) => {
         return t.code === type;
@@ -144,6 +144,7 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
                 onChange={(e) => {
                   setQuestion(e.target.value);
                 }}
+                placeholder={currentSlide.name}
                 defaultValue={question}
                 type="text"
               />
@@ -181,8 +182,8 @@ export default function TypesPresentation({ currentSlide, handleChange }) {
               </div>
             </section>
           )}
-          {currentSlide.type.code !== "sintipo" && (
-            <OptionsSlides currentSlide={currentSlide} />
+          {currentSlide.type !== "sintipo" && (
+            <OptionsSlide currentSlide={currentSlide}  handleChange={handleChange}/>
           )}
         </motion.div>
       ) : (

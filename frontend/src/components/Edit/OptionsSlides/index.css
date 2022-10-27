@@ -8,6 +8,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .todo-list li:last-child {
@@ -54,7 +58,7 @@
 }
 
 .todo-list li .destroy:after {
-  content: "×";
+  content: "X";
   display: block;
   height: 100%;
   line-height: 1.1;

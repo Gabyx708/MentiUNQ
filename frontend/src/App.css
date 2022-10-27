@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+
 }
 .btn-custom {
   --color: black;
@@ -23,7 +24,7 @@
   z-index: -1;
   background: black;
   height: 105px;
-  width: 220px;
+  width: 300px;
   border-radius: 50%;
 }
 

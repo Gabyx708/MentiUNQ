@@ -27,8 +27,7 @@ export default function PreviewSlide({ slide, select, index }) {
           exit="hidden"
           variants={variants}
         >
-          <h5 style={{ margin: "0px" }}>{slide.type.name}</h5>
-          <h6>{slide.question}</h6>
+          <h6 style={{ margin: "0px" }}>{slide.name}</h6>
         </motion.div>
       )}
     </>

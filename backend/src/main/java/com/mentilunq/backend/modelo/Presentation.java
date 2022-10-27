@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,10 @@ public class Presentation {
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Slide> slides;
+
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreate;
 
     public Presentation(String title) {
         this.title = title;
@@ -55,5 +60,13 @@ public class Presentation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setDateCreate(Date dateCreate) {
+        this.dateCreate = dateCreate;
+    }
+
+    public Date getDateCreate() {
+        return dateCreate;
     }
 }

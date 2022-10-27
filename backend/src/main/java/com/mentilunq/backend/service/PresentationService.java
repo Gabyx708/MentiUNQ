@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class PresentationService {
 
     public Presentation createPresentation(Presentation presentation) {
         Slide slide = new Slide();
+        presentation.setDateCreate(new Date());
         presentation.addSlide(slide);
         return presentationRepository.save(presentation);
     }

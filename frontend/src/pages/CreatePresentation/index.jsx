@@ -15,7 +15,7 @@ export default function CreatePresentation() {
     id,
   });
   const [currentSlide, setCurrentSlide] = useState(
-    presentation ? presentation.slides[0] : null
+    null
   );
 
   useEffect(() => {
@@ -65,7 +65,7 @@ export default function CreatePresentation() {
                 setCurrentSlide={setCurrentSlide}
                 handlePresentationChange={handlePresentationChange}
               />
-              <EditPresentation currentSlide={currentSlide} />
+              <EditPresentation currentSlide={currentSlide} handleChange={handleChange}/>
               <TypesPresentation
                 currentSlide={currentSlide}
                 handleChange={handleChange}

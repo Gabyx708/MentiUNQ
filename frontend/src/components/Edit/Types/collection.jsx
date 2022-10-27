@@ -1,6 +1,5 @@
-import MultipleChoice from "./MultipleChoice";
 import OpenEnded from "./OpenEnded";
-import Ranking from "./Ranking";
+import Options from "./Options";
 import WordCloud from "./WordCloud";
 
 const collectionTypes = [  {
@@ -11,7 +10,7 @@ const collectionTypes = [  {
   {
     // default export
     code: "multiplechoice",
-    component: MultipleChoice,
+    component: Options,
   },
   {
     // default export
@@ -26,8 +25,7 @@ const collectionTypes = [  {
   {
     // default export
     code: "ranking",
-    component: Ranking,
-    fields:[1,2,3]
+    component: Options
   },];
 
  export default function checkout (step ) {
